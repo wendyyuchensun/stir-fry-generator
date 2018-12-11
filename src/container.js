@@ -1,5 +1,5 @@
 const { Container } = require('flux/utils');
-const { showIngredients } = require('./actions');
+const { showNewIngredients } = require('./actions');
 const ingredientsStore = require('./store');
 const StirFryGenerator = require('./view');
 const ingredients = require('./ingredients');
@@ -7,7 +7,7 @@ const ingredients = require('./ingredients');
 const getStores = () => [ ingredientsStore ];
 const getState = () => ({
     ingredients: ingredientsStore.getState(),
-    updateIngredients: () => showIngredients(ingredients)
+    updateIngredients: () => showNewIngredients(ingredients)
 });
 
 const StirFryGeneratorContainer = Container.createFunctional(

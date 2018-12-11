@@ -1,25 +1,21 @@
-const http = require('http');
 const ingredientDispatcher = require('./dispatcher');
+const { get } = require('./utils');
 
 const actionTypes = {
     RECEIVE_INGREDIENTS: 'RECEIVE_INGREDIENTTS'
 };
 
-const showIngredients = (payload, done) => {
-    http.get('http://localhost:8000', res => {
-        let data = '';
-        res.on('data', chunk => data += chunk);
-        res.on('end', () => {
-            const { ingredients } = JSON.parse(data);
+const showNewIngredients = (payload, done) => {
+    get('http://localhost:8000', data => {
+        const { ingredients } = data;
 
-            ingredientDispatcher.dispatch({
-                type: actionTypes.RECEIVE_INGREDIENTS,
-                ingredients
-            });
-
-            return done && done();
+        ingredientDispatcher.dispatch({
+            type: actionTypes.RECEIVE_INGREDIENTS,
+            ingredients
         });
+
+        return done && done();
     });
 };
 
-module.exports = { actionTypes, showIngredients };
+module.exports = { actionTypes, showNewIngredients };

@@ -1,7 +1,7 @@
 const express = require('express');
 const React = require('react');
 const ReactDOMServer = require('react-dom/server');
-const { showIngredients } = require('./src/actions');
+const { showNewIngredients } = require('./src/actions');
 const StirFryGeneratorContainer = require('./src/container');
 
 const server = express();
@@ -26,7 +26,7 @@ const createPageHTML = appHTML => `
 `;
 
 server.get('/', (req, res, next) => {
-    showIngredients({}, () => {
+    showNewIngredients({}, () => {
         const App = React.createElement(StirFryGeneratorContainer);
         const appHTML = ReactDOMServer.renderToString(App);
         const pageHTML = createPageHTML(appHTML);
