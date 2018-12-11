@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-      "build": "node_modules/.bin/webpack"
+      "build": "node_modules/.bin/webpack",
+      "serve": "npm run build && node server.js"
   },
   "keywords": [],
   "author": "",
