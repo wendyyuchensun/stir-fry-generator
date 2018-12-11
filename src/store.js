@@ -1,10 +1,9 @@
 const { ReduceStore } = require('flux/utils');
-const ingredientDispatcher = require('./dispatcher');
-const { actionTypes } = require('./actions');
+const { actionTypes, showNewIngredients } = require('./actions');
 
 class IngredientsStore extends ReduceStore {
-    constructor () {
-        super(ingredientDispatcher);
+    constructor(dispatcher) {
+        super(dispatcher);
     }
 
     getInitialState () {
@@ -19,8 +18,14 @@ class IngredientsStore extends ReduceStore {
                 return state;
         } 
     }
+
+    dehydrate () {
+        return this.getState();
+    }
+
+    rehydrate (state) {
+        this._state = state;
+    }
 }
 
-const ingredientsStore = new IngredientsStore();
-
-module.exports = ingredientsStore;
+module.exports = IngredientsStore;

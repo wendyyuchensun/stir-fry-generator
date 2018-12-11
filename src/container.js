@@ -4,16 +4,18 @@ const ingredientsStore = require('./store');
 const StirFryGenerator = require('./view');
 const ingredients = require('./ingredients');
 
-const getStores = () => [ ingredientsStore ];
-const getState = () => ({
-    ingredients: ingredientsStore.getState(),
-    updateIngredients: () => showNewIngredients(ingredients)
-});
+const createStirFryGeneratorContainer = (dispatcher, store) => {
+    const getStores = () => [ store ];
+    const getState = () => ({
+        ingredients: store.getState(),
+        updateIngredients: () => showNewIngredients(dispatcher, {}, null)
+    });
 
-const StirFryGeneratorContainer = Container.createFunctional(
-    StirFryGenerator,
-    getStores,
-    getState
-);
+    return Container.createFunctional(
+        StirFryGenerator,
+        getStores,
+        getState
+    );
+} 
 
-module.exports = StirFryGeneratorContainer;
+module.exports = createStirFryGeneratorContainer;
