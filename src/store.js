@@ -1,7 +1,6 @@
 const { ReduceStore } = require('flux/utils');
 const ingredientDispatcher = require('./dispatcher');
 const { actionTypes } = require('./actions');
-const { ingredients1 } = require('./ingredients');
 
 class IngredientsStore extends ReduceStore {
     constructor () {
@@ -9,7 +8,7 @@ class IngredientsStore extends ReduceStore {
     }
 
     getInitialState () {
-        return ingredients1;
+        return [];
     }
 
     reduce (state, action) {

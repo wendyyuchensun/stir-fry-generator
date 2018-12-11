@@ -1,12 +1,4 @@
-const ingredients1 = [
-    'sesame oil',
-    'garlic',
-    'chili',
-    'chicken',
-    'cabbage'
-];
-
-const ingredients2 = [
+const ingredients = [
     'ginger',
     'beef',
     'broccoli',
@@ -14,4 +6,4 @@ const ingredients2 = [
     'soy sauce'
 ];
 
-module.exports = { ingredients1, ingredients2 };
+module.exports = ingredients;

@@ -26,11 +26,12 @@ const createPageHTML = appHTML => `
 `;
 
 server.get('/', (req, res, next) => {
-    const App = React.createElement(StirFryGeneratorContainer);
-    const appHTML = ReactDOMServer.renderToString(App);
-    const pageHTML = createPageHTML(appHTML);
-
-    res.send(pageHTML);
+    showIngredients({}, () => {
+        const App = React.createElement(StirFryGeneratorContainer);
+        const appHTML = ReactDOMServer.renderToString(App);
+        const pageHTML = createPageHTML(appHTML);
+        res.send(pageHTML);
+    });
 });
 
 server.get('/bundle.js', (req, res, next) => {
